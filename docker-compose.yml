@@ -1,0 +1,20 @@
+﻿version: '3.8'
+
+services:
+  mysql-walgreens:
+    image: mysql:8.0
+    container_name: mysql-walgreens-pos
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-RootPassword123}
+      MYSQL_DATABASE: farmacias_walgreens_pos
+      MYSQL_USER: ${DB_USER:-walgreens_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-UserPassword123}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./scripts:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+
+volumes:
+  mysql_data:

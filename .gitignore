@@ -1,0 +1,13 @@
+﻿# Docker
+.env
+mysql_data/
+backups/*.sql
+!.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
